@@ -6,6 +6,8 @@ indent() {
   sed -u 's/^/       /'
 }
 
+pip3 install meson
+
 ###### install Rclone ##########
 echo "-----> Installing rclone"
 BUILD_DIR=$1
