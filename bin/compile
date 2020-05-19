@@ -6,7 +6,7 @@ indent() {
   sed -u 's/^/       /'
 }
 
-#pip3 install meson
+export PATH="$PATH:/app/.apt/bin"
 
 ###### install Rclone ##########
 echo "-----> Installing rclone"
