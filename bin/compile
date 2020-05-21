@@ -102,11 +102,22 @@ mkdir -p "$(dirname "$PROFILE_PATH")"
 echo 'export PATH="$PATH:${HOME}/vendor/winrar"' >> $PROFILE_PATH
 
 
+
 ####### adding custom path #######
+
 echo "exporting xtk_bin PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/xtk_bin.sh"
 mkdir -p "$(dirname "$PROFILE_PATH")"
 echo 'export PATH="$PATH:/app/.apt/bin"' >> $PROFILE_PATH
+
+
+echo "exporting /app/bin PATH" | indent
+PROFILE_PATH="$BUILD_DIR/.profile.d/app_bin.sh"
+mkdir -p "$(dirname "$PROFILE_PATH")"
+echo 'export PATH="$PATH:/app/bin"' >> $PROFILE_PATH
+
+####### end custom path #######
+
 
 
 #### moving rclone.conf ########
