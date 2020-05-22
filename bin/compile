@@ -117,13 +117,13 @@ mkdir -p "$(dirname "$PROFILE_PATH")"
 echo 'export PATH="$PATH:/app/bin"' >> $PROFILE_PATH
 
 
-cd /app/vendor
-echo "cloning vcsi.git" | indent
-git clone https://github.com/amietn/vcsi.git
-cd vcsi
-echo "running vcsi setup" | indent
-python setup.py install
-echo "vcsi setup done" | indent
+# cd /app/vendor
+# echo "cloning vcsi.git" | indent
+# git clone https://github.com/amietn/vcsi.git
+# cd vcsi
+# echo "running vcsi setup" | indent
+# python setup.py install
+# echo "vcsi setup done" | indent
 
 ####### end custom path #######
 
