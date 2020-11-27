@@ -137,6 +137,16 @@ echo 'export PATH="$PATH:${HOME}/vendor/ytdl"' >> $PROFILE_PATH
 
 
 
+####### change permission of app folder #######
+
+echo "change permission of app" | indent
+PROFILE_PATH="$BUILD_DIR/.profile.d/xchmod.sh"
+mkdir -p "$(dirname "$PROFILE_PATH")"
+echo 'chmod 700 -R ${HOME}/vendor/' >> $PROFILE_PATH
+
+
+
+
 ####### adding custom path #######
 
 echo "exporting xtk_bin PATH" | indent
