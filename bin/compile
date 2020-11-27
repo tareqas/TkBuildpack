@@ -7,6 +7,8 @@ indent() {
 }
 
 
+
+
 ###### install Rclone ##########
 echo "-----> Installing rclone"
 BUILD_DIR=$1
@@ -45,6 +47,9 @@ mkdir -p "$(dirname "$PROFILE_PATH")"
 echo 'export PATH="$PATH:${HOME}/vendor/rclone"' >> $PROFILE_PATH
 echo "Rclone installed"  | indent
 
+
+
+
 ###### install aria2 ##########
 echo "-----> Installing Aria2"
 
@@ -72,6 +77,9 @@ echo "exporting PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/aria2c.sh"
 mkdir -p "$(dirname "$PROFILE_PATH")"
 echo 'export PATH="$PATH:${HOME}/vendor/aria2c"' >> $PROFILE_PATH
+
+
+
 
 #### install winrar ########
 
@@ -103,6 +111,33 @@ echo 'export PATH="$PATH:${HOME}/vendor/winrar"' >> $PROFILE_PATH
 
 
 
+
+###### install Youtube-dl ##########
+echo "-----> Installing youtube-dl"
+FILE="youtube-dl"
+DOWNLOAD_URL="https://yt-dl.org/downloads/latest/$FILE"
+
+if ! [ -e "$CACHE_DIR/$FILE" ]; then
+  echo "-----> Fetching Youtube-dl binaries at ${DOWNLOAD_URL}" | indent
+  wget $DOWNLOAD_URL -q -O "$CACHE_DIR/$FILE"
+else
+  echo "build using cached source"  | indent
+fi
+
+cd "$BUILD_DIR/$VENDOR_DIR"
+mkdir -p ytdl
+cd ytdl
+cp "$CACHE_DIR/$FILE" .
+tar xf "$CACHE_DIR/$FILE" --strip-components=1
+
+echo "exporting PATH" | indent
+PROFILE_PATH="$BUILD_DIR/.profile.d/ytdl.sh"
+mkdir -p "$(dirname "$PROFILE_PATH")"
+echo 'export PATH="$PATH:${HOME}/vendor/ytdl"' >> $PROFILE_PATH
+
+
+
+
 ####### adding custom path #######
 
 echo "exporting xtk_bin PATH" | indent
@@ -126,6 +161,7 @@ echo 'export PATH="$PATH:/app/bin"' >> $PROFILE_PATH
 # echo "vcsi setup done" | indent
 
 ####### end custom path #######
+
 
 
 
